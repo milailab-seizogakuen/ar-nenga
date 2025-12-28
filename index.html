@@ -43,24 +43,33 @@
     <!-- 3Dモデルの事前読み込み -->
     <a-assets>
       <a-asset-item id="shinkansen-model" src="./shikansen.glb"></a-asset-item>
+      <a-asset-item id="graba-model" src="./graba.glb"></a-asset-item>
     </a-assets>
 
     <!-- マーカー -->
     <a-marker
       type="pattern"
-      url="./pattern-Generated Image December 28, 2025 - 7_04PM.patt""
+      url="./pattern-Generated Image December 28, 2025 - 7_04PM.patt"
       smooth="true"
       smoothCount="10"
       smoothTolerance="0.05"
       smoothThreshold="5"
     >
-      <!-- 新幹線モデル -->
+      <!-- グラバー園：地面にでっかく配置 -->
+      <a-entity
+        gltf-model="#graba-model"
+        scale="1.5 1.5 1.5"
+        position="0 0 0"
+        rotation="0 0 0"
+      ></a-entity>
+
+      <!-- 新幹線：グラバー園の上を飛んでる -->
       <a-entity
         gltf-model="#shinkansen-model"
-        scale="0.5 0.5 0.5"
-        position="0 0.5 0"
+        scale="0.3 0.3 0.3"
+        position="0 1.2 0"
         rotation="0 0 0"
-        animation="property: rotation; to: 0 360 0; loop: true; dur: 10000; easing: linear"
+        animation="property: position; from: -1 1.2 0; to: 1 1.2 0; loop: true; dur: 5000; easing: linear; dir: alternate"
       ></a-entity>
     </a-marker>
 
